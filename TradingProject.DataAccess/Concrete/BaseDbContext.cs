@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using TradingProject.Core.Entity;
+using TradingProject.Core.Entities;
 using TradingProject.Entities.Concrete;
 
 namespace TradingProject.DataAccess.Concrete

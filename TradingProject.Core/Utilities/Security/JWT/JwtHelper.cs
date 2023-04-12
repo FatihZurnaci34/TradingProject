@@ -1,5 +1,4 @@
-﻿using Core.Entity;
-using Core.Extensions;
+﻿using Core.Extensions;
 using Core.Utilities.Security.Encryption;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using TradingProject.Core.Entities;
 
 namespace Core.Utilities.Security.JWT
 {

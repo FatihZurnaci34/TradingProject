@@ -1,10 +1,10 @@
-﻿using Core.Entity;
+﻿
+using TradingProject.Core.DataAccess.Repositories;
 
-namespace TradingProject.Core.Entity;
+namespace TradingProject.Core.Entities;
 
-public class UserOperationClaim : IEntity
+public class UserOperationClaim : Entity
 {
-    public int Id { get; set; }
     public int UserId { get; set; }
     public int OperationClaimId { get; set; }
 
@@ -15,7 +15,7 @@ public class UserOperationClaim : IEntity
     {
     }
 
-    public UserOperationClaim(int id, int userId, int operationClaimId) : this()
+    public UserOperationClaim(int id, int userId, int operationClaimId) : base(id)
     {
         UserId = userId;
         OperationClaimId = operationClaimId;

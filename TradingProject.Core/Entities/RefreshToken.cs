@@ -1,11 +1,10 @@
-﻿using Core.Entity;
+﻿
 
+using TradingProject.Core.DataAccess.Repositories;
 
-namespace TradingProject.Core.Entity;
-
-public class RefreshToken : IEntity
+namespace TradingProject.Core.Entities;
+public class RefreshToken : Entity
 {
-    public int Id { get; set; }
     public int UserId { get; set; }
     public string Token { get; set; }
     public DateTime Expires { get; set; }
