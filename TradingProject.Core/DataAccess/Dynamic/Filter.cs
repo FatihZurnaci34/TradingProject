@@ -1,4 +1,4 @@
-﻿namespace TradingProject.Core.DataAccess.Dynamic;
+﻿namespace Core.DataAccess.Dynamic;
 
 public class Filter
 {

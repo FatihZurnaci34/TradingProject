@@ -1,8 +1,9 @@
 ﻿
 
-using TradingProject.Core.DataAccess.Repositories;
 
-namespace TradingProject.Core.Entities;
+using Core.DataAccess.Repositories;
+
+namespace Core.Entities;
 public class RefreshToken : Entity
 {
     public int UserId { get; set; }

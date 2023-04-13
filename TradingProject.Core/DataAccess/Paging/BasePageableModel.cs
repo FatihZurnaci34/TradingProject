@@ -1,4 +1,4 @@
-﻿namespace TradingProject.Core.DataAccess.Paging;
+﻿namespace Core.DataAccess.Paging;
 
 public class BasePageableModel
 {

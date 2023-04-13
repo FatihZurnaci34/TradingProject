@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TradingProject.Core.Entities
+namespace Core.Entities
 {
     public interface IDto
     {

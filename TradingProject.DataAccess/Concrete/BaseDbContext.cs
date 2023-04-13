@@ -1,4 +1,5 @@
 ﻿
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using TradingProject.Core.Entities;
 using TradingProject.Entities.Concrete;
 
 namespace TradingProject.DataAccess.Concrete
@@ -76,17 +76,6 @@ namespace TradingProject.DataAccess.Concrete
                 a.ToTable("OperationClaims").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
-
-            });
-
-            modelBuilder.Entity<UserOperationClaim>(a =>
-            {
-                a.ToTable("UserOperationClaims").HasKey(k => k.Id);
-                a.Property(p => p.Id).HasColumnName("Id");
-                a.Property(p => p.UserId).HasColumnName("UserId");
-                a.Property(p => p.OperationClaimId).HasColumnName("OperationClaimId");
-                a.HasOne(p => p.User);
-                a.HasOne(p => p.OperationClaim);
 
             });
 

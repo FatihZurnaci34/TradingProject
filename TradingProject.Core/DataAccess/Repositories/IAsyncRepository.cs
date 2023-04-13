@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
+using Core.DataAccess.Paging;
 using Microsoft.EntityFrameworkCore.Query;
-using TradingProject.Core.DataAccess.Paging;
 
-namespace TradingProject.Core.DataAccess.Repositories;
+namespace Core.DataAccess.Repositories;
 
 public interface IAsyncRepository<T> : IQuery<T> where T : Entity
 {

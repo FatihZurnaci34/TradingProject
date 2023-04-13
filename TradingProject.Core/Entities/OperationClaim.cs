@@ -1,7 +1,7 @@
 ﻿
-using TradingProject.Core.DataAccess.Repositories;
+using Core.DataAccess.Repositories;
 
-namespace TradingProject.Core.Entities;
+namespace Core.Entities;
 
 public class OperationClaim : Entity
 {

@@ -1,11 +1,10 @@
 ﻿using System.Linq.Expressions;
-
+using Core.DataAccess.Dynamic;
+using Core.DataAccess.Paging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using TradingProject.Core.DataAccess.Dynamic;
-using TradingProject.Core.DataAccess.Paging;
 
-namespace TradingProject.Core.DataAccess.Repositories;
+namespace Core.DataAccess.Repositories;
 
 public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IRepository<TEntity>
     where TEntity : Entity
