@@ -10,5 +10,6 @@ namespace TradingProject.DataAccess.Abstract
 {
     public interface ICustomerRepository : IAsyncRepository<Customer>, IRepository<Customer>
     {
+    
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,5 +11,6 @@ namespace TradingProject.DataAccess.Abstract
 {
     public interface ICategoryRepository:IAsyncRepository<Category>,IRepository<Category>
     {
+        public List<Category> GetAll();
     }
 }

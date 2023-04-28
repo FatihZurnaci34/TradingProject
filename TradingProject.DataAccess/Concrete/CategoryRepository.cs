@@ -14,5 +14,13 @@ namespace TradingProject.DataAccess.Concrete
         public CategoryRepository(BaseDbContext context) : base(context)
         {
         }
+
+        public List<Category> GetAll()
+        {
+            var categories = Context.Categories;
+            return categories.ToList();
+
+
+        }
     }
 }
