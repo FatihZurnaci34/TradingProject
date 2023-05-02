@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TradingProject.Entities.Concrete;
 using TradingProject.Entities.Dtos.Categories;
+using TradingProject.Entities.Dtos.Subcategories;
+using TradingProject.Entities.Models.Categories;
+using TradingProject.Entities.Models.Subcategories;
 
 namespace TradingProject.Business.Profiles
 {
@@ -19,7 +22,8 @@ namespace TradingProject.Business.Profiles
             CreateMap<Category, DeleteCategoryDto>().ReverseMap();
             CreateMap<Category, CategoryGetByIdDto>().ReverseMap();
             CreateMap<Category, CategoryListDto>().ReverseMap();
-            CreateMap<IPaginate<Category>, CategoryListDto>().ReverseMap();
+            CreateMap<IPaginate<Category>,CategoryListModel>().ReverseMap();
+
         }
     }
 }

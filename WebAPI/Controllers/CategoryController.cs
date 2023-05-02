@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.DataAccess.Request;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TradingProject.Business.Abstract;
 using TradingProject.Entities.Dtos.Categories;
@@ -40,15 +41,15 @@ namespace WebAPI.Controllers
 
         
         [HttpGet("getbyid")]
-        public IActionResult GetById( int id)
+        public async Task<IActionResult> GetById( int id)
         {
-            var result = _categoryService.GetById(id);
+            var result = await _categoryService.GetById(id);
             return Ok(result);
         }
         [HttpGet("getlist")]
-        public IActionResult GetList()
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            var result = _categoryService.GetList();
+            var result = await _categoryService.GetList(pageRequest);
             return Ok(result);
         }
         

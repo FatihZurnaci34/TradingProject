@@ -23,6 +23,7 @@ namespace TradingProject.Business
             //    services.AddScoped<SubcategoryBusinessRules>();
             //    services.AddScoped<ProductBusinessRules>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ISubcategoryService, SubcategoryManager>();
 
         //    services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         //    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

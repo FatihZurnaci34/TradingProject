@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.DataAccess.Request;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace TradingProject.Business.Abstract
         public Category Create(CreateCategoryDto createCategoryDto);
         public Category Update(UpdateCategoryDto updateCategoryDto);
         public Category Delete(DeleteCategoryDto deleteCategoryDto);
-        public CategoryGetByIdDto GetById(int id);
-        public List<CategoryListDto> GetList();
+        public Task<CategoryGetByIdDto> GetById(int id);
+        public Task<CategoryListModel> GetList(PageRequest pageRequest);
     }
 }

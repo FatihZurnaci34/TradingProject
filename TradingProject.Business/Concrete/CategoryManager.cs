@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Core.DataAccess.Paging;
+using Core.DataAccess.Request;
 using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
@@ -39,18 +41,18 @@ namespace TradingProject.Business.Concrete
             
         }
 
-        public CategoryGetByIdDto GetById(int id)
+        public async Task<CategoryGetByIdDto> GetById(int id)
         {
-            Category category = _categoryRepository.Get(c=>c.Id==id);
+            Category category = await _categoryRepository.GetAsync(c=>c.Id==id);
             CategoryGetByIdDto categoryGetByIdDto = _mapper.Map<CategoryGetByIdDto>(category);
             return categoryGetByIdDto;
         }
 
-        public List<CategoryListDto> GetList()
+        public async Task<CategoryListModel> GetList(PageRequest pageRequest)
         {
-            List<Category> category = _categoryRepository.GetAll();
-            List<CategoryListDto> categoryListDto = _mapper.Map<List<CategoryListDto>>(category);
-            return categoryListDto;
+            IPaginate<Category> category = await _categoryRepository.GetListAsync(index: pageRequest.Page, size: pageRequest.PageSize);
+            CategoryListModel mappedCategory = _mapper.Map<CategoryListModel>(category);
+            return mappedCategory;
         }
 
         public Category Update(UpdateCategoryDto updateCategoryDto)

@@ -1,3 +1,4 @@
+using System.Reflection;
 using TradingProject.Business;
 using TradingProject.DataAccess;
 
@@ -10,6 +11,7 @@ builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
 //builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
