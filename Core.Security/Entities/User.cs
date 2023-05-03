@@ -2,7 +2,7 @@
 
 
 
-namespace Core.Entities;
+namespace Core.Security.Entities;
 
 public class User : Entity
 {

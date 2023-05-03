@@ -1,7 +1,7 @@
 ﻿
 using Core.DataAccess.Repositories;
 
-namespace Core.Entities;
+namespace Core.Security.Entities;
 
 public class OperationClaim : Entity
 {

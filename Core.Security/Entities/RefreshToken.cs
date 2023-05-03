@@ -3,7 +3,7 @@
 
 using Core.DataAccess.Repositories;
 
-namespace Core.Entities;
+namespace Core.Security.Entities;
 public class RefreshToken : Entity
 {
     public int UserId { get; set; }
