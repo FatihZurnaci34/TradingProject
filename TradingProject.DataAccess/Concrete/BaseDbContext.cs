@@ -97,7 +97,6 @@ namespace TradingProject.DataAccess.Concrete
                 a.Property(p => p.Token).HasColumnName("Token");
                 a.Property(p => p.Expires).HasColumnName("Expires");
                 a.Property(p => p.Created).HasColumnName("Created");
-                a.Property(p => p.CreatedByIp).HasColumnName("CreatedByIp");
                 a.Property(p => p.Revoked).HasColumnName("Revoked");
                 a.Property(p => p.RevokedByIp).HasColumnName("RevokedByIp");
                 a.Property(p => p.ReplacedByToken).HasColumnName("ReplacedByToken");

@@ -37,15 +37,14 @@ public class JwtHelper : ITokenHelper
         };
     }
 
-    public RefreshToken CreateRefreshToken(User user, string ipAddress)
+    public RefreshToken CreateRefreshToken(User user)
     {
         RefreshToken refreshToken = new()
         {
             UserId = user.Id,
             Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
             Expires = DateTime.UtcNow.AddDays(7),
-            Created = DateTime.UtcNow,
-            CreatedByIp = ipAddress
+            Created = DateTime.UtcNow
         };
 
         return refreshToken;

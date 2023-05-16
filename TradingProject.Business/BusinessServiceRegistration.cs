@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TradingProject.Business.Abstract;
 using TradingProject.Business.Concrete;
+using TradingProject.Business.Rules;
+using TradingProject.Business.SecurityServices;
 
 namespace TradingProject.Business
 {
@@ -18,12 +20,14 @@ namespace TradingProject.Business
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             //    services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            //    services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
             //    services.AddScoped<CategoryBusinessRules>();
             //    services.AddScoped<SubcategoryBusinessRules>();
             //    services.AddScoped<ProductBusinessRules>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ISubcategoryService, SubcategoryManager>();
+            services.AddScoped<IAuthsService, AuthsManager>();
+            services.AddScoped<IAuthService, AuthManager> ();
 
         //    services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         //    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
