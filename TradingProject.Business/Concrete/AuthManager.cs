@@ -23,15 +23,17 @@ namespace TradingProject.Business.Concrete
 
         private readonly IAuthsService _authService;
         private readonly ICustomerRepository _customerRepository;
+        private readonly ISupplierRepository _supplierRepository;
         private readonly IUserRepository _userRepository;
         private readonly AuthBusinessRules _authBusinessRules;
 
-        public AuthManager(IAuthsService authService, ICustomerRepository customerRepository, IUserRepository userRepository, AuthBusinessRules authBusinessRules)
+        public AuthManager(IAuthsService authService, ICustomerRepository customerRepository, IUserRepository userRepository, AuthBusinessRules authBusinessRules, ISupplierRepository supplierRepository)
         {
             _authService = authService;
             _customerRepository = customerRepository;
             _userRepository = userRepository;
             _authBusinessRules = authBusinessRules;
+            _supplierRepository = supplierRepository;
         }
 
         public AuthManager()
@@ -40,6 +42,7 @@ namespace TradingProject.Business.Concrete
 
         public async Task<RegisteredDto> CustomerForRegister(CustomerForRegisterDto customerForRegisterDto)
         {
+            await _authBusinessRules.EmailCanNotBeDuplicatedWhenRegistered(customerForRegisterDto.Email);
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(customerForRegisterDto.Password, out passwordHash, out passwordSalt);
             Customer newCustomer = new()
@@ -81,6 +84,37 @@ namespace TradingProject.Business.Concrete
                 AccessToken = createdAccessToken,
                 RefreshToken = addedRefreshToken
             };
+        }
+
+        public async Task<RegisteredDto> SupplierForRegister(SupplierForRegisterDto supplierForRegisterDto)
+        {
+            await _authBusinessRules.EmailCanNotBeDuplicatedWhenRegistered(supplierForRegisterDto.Email);
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(supplierForRegisterDto.Password, out passwordHash, out passwordSalt);
+            Supplier newSupplier = new()
+            {
+                Email = supplierForRegisterDto.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                FirstName = supplierForRegisterDto.FirstName,
+                LastName = supplierForRegisterDto.LastName,
+                CompanyName = supplierForRegisterDto.CompanyName,
+                Location = supplierForRegisterDto.Location,
+                Status = true
+            };
+            Supplier createdSupplier = await _supplierRepository.AddAsync(newSupplier);
+            await _authService.CreateAndAddUserClaim(createdSupplier);
+
+            AccessToken createdAccessToken = await _authService.CreateAccessToken(createdSupplier);
+            RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(createdSupplier);
+            RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
+
+            RegisteredDto registeredDto = new()
+            {
+                RefreshToken = addedRefreshToken,
+                AccessToken = createdAccessToken,
+            };
+            return registeredDto;
         }
     }
 }

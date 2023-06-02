@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\TradingProject.Core\Core.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Dtos\Supplier\" />
+	</ItemGroup>
+
 </Project>

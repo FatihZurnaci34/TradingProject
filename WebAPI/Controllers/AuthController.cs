@@ -29,6 +29,15 @@ namespace WebAPI.Controllers
             return Ok(result.AccessToken);
         }
 
+        [HttpPost("RegisterForSupplier")]
+        public async Task<IActionResult> RegisterForSupplier([FromBody] SupplierForRegisterDto supplierForRegisterDto)
+        {
+
+            RegisteredDto result = await _authService.SupplierForRegister(supplierForRegisterDto);
+            SetRefreshTokenToCookie(result.RefreshToken);
+            return Ok(result.AccessToken);
+        }
+
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {

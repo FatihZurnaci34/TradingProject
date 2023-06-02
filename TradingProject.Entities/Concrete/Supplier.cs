@@ -15,9 +15,9 @@ namespace TradingProject.Entities.Concrete
 
         public ICollection<Product> Products { get; set; }
 
-        public Supplier()
+        public Supplier() 
         {
-
+            
         }
     }
 }

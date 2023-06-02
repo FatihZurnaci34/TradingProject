@@ -21,6 +21,7 @@ namespace TradingProject.Business
             //    services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<ProductBusinessRules>();
             //    services.AddScoped<CategoryBusinessRules>();
             //    services.AddScoped<SubcategoryBusinessRules>();
             //    services.AddScoped<ProductBusinessRules>();
@@ -28,6 +29,7 @@ namespace TradingProject.Business
             services.AddScoped<ISubcategoryService, SubcategoryManager>();
             services.AddScoped<IAuthsService, AuthsManager>();
             services.AddScoped<IAuthService, AuthManager> ();
+            services.AddScoped<IProductService, ProductManager>();
 
         //    services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         //    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
