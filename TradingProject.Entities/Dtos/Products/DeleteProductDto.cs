@@ -9,6 +9,6 @@ namespace TradingProject.Entities.Dtos.Products
     public class DeleteProductDto
     {
         public int Id { get; set; }
-        public int SupplierId { get; }
+        public int SupplierId { get; set; }
     }
 }

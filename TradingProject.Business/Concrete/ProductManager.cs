@@ -38,7 +38,6 @@ namespace TradingProject.Business.Concrete
             await _productRepository.AddAsync(mappedProduct);
 
             Supplier supplier = await _supplierRepository.GetAsync(p => p.Id == mappedProduct.SupplierId);
-
             supplier.NumberOfProducts++;
             await _supplierRepository.UpdateAsync(supplier);
             
@@ -50,9 +49,9 @@ namespace TradingProject.Business.Concrete
         {
             Product mappedProduct = _mapper.Map<Product>(deleteProductDto);
             await _productRepository.DeleteAsync(mappedProduct);
-            //Supplier supplier = await _supplierRepository.GetAsync(p => p.Id == mappedProduct.SupplierId);
-            //supplier.NumberOfProducts--;
-            //await _supplierRepository.UpdateAsync(supplier);
+            Supplier supplier = await _supplierRepository.GetAsync(p => p.Id == mappedProduct.SupplierId);
+            supplier.NumberOfProducts--;
+            await _supplierRepository.UpdateAsync(supplier);
             return mappedProduct;
         }
 
